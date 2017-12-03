@@ -1,5 +1,6 @@
 ﻿using SnakeWindowsFormsApplication.Model;
 using SnakeWindowsFormsApplication.Persistence;
+using SnakeWindowsFormsApplication.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,18 @@ namespace SnakeWindowsFormsApplication
         {
             _mapsize = 15;
             
+        }
+
+        private void ResultOption_Click(Object sender, EventArgs e)
+        {
+            ResultBox b = new ResultBox();
+            b.ShowDialog();
+
+        }
+        private void CardOption_Click(Object sender,EventArgs e)
+        {
+            cardBox c = new cardBox();
+            c.ShowDialog();
         }
 
         private void setTheOptions()
@@ -108,8 +121,14 @@ namespace SnakeWindowsFormsApplication
            
             progressLabel.Text = "A játék véget ért!";
             gameTableBox.KeyUp -= new KeyEventHandler(keyPressed);
-            MessageBox.Show("Vége a játéknak!" +
+
+            GameOverBox g = new GameOverBox(_gamemodel);
+            g.ShowDialog();
+
+           /* MessageBox.Show("Vége a játéknak!" +
                 Environment.NewLine + "Ennyi pontja lett: " + e.GameScore);
+                */
+           
         }
 
         private void keyPressed(object sender, KeyEventArgs e)

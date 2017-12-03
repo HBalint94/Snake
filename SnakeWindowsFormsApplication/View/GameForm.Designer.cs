@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameOption = new System.Windows.Forms.ToolStripMenuItem();
             this.loadGameOption = new System.Windows.Forms.ToolStripMenuItem();
             this.saveGameOption = new System.Windows.Forms.ToolStripMenuItem();
             this.exitOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.cardOption = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.smallGameTableOption = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumGameTableOption = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +48,7 @@
             this.GameScoreLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.GameScoreTextLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +70,9 @@
             this.newGameOption,
             this.loadGameOption,
             this.saveGameOption,
-            this.exitOption});
+            this.exitOption,
+            this.resultOption,
+            this.cardOption});
             this.menuDropDown.Name = "menuDropDown";
             this.menuDropDown.Size = new System.Drawing.Size(50, 20);
             this.menuDropDown.Text = "Menü";
@@ -98,6 +104,20 @@
             this.exitOption.Size = new System.Drawing.Size(151, 22);
             this.exitOption.Text = "KIlépés";
             this.exitOption.Click += new System.EventHandler(this.exitOption_Click);
+            // 
+            // resultOption
+            // 
+            this.resultOption.Name = "resultOption";
+            this.resultOption.Size = new System.Drawing.Size(151, 22);
+            this.resultOption.Text = "Eredmények";
+            this.resultOption.Click += new System.EventHandler(this.ResultOption_Click);
+            // 
+            // cardOption
+            // 
+            this.cardOption.Name = "cardOption";
+            this.cardOption.Size = new System.Drawing.Size(151, 22);
+            this.cardOption.Text = "Névjegy";
+            this.cardOption.Click += new System.EventHandler(this.CardOption_Click);
             // 
             // settingsDropDown
             // 
@@ -146,7 +166,6 @@
             // 
             // openFileDialog
             // 
-        
             this.openFileDialog.Filter = "Snake tábla (*.stl)|*.stl";
             this.openFileDialog.Title = "Snake játék betöltése";
             // 
@@ -156,16 +175,16 @@
             this.GameScoreLabel,
             this.GameScoreTextLabel,
             this.progressLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 256);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 254);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(383, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(383, 24);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // GameScoreLabel
             // 
             this.GameScoreLabel.Name = "GameScoreLabel";
-            this.GameScoreLabel.Size = new System.Drawing.Size(48, 17);
+            this.GameScoreLabel.Size = new System.Drawing.Size(48, 19);
             this.GameScoreLabel.Text = "Pontok:";
             // 
             // GameScoreTextLabel
@@ -173,7 +192,7 @@
             this.GameScoreTextLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.GameScoreTextLabel.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.GameScoreTextLabel.Name = "GameScoreTextLabel";
-            this.GameScoreTextLabel.Size = new System.Drawing.Size(0, 17);
+            this.GameScoreTextLabel.Size = new System.Drawing.Size(17, 19);
             this.GameScoreTextLabel.Text = "0";
             // 
             // progressLabel
@@ -181,7 +200,7 @@
             this.progressLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.progressLabel.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(54, 17);
+            this.progressLabel.Size = new System.Drawing.Size(58, 19);
             this.progressLabel.Text = "Esemény";
             // 
             // GameForm
@@ -190,6 +209,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gameTableBox);
             this.Controls.Add(this.menuStrip2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "GameForm";
             this.Text = "Snake";
@@ -236,6 +256,9 @@
         private System.Windows.Forms.ToolStripStatusLabel GameScoreLabel;
         private System.Windows.Forms.ToolStripStatusLabel GameScoreTextLabel;
         private System.Windows.Forms.ToolStripStatusLabel progressLabel;
+        private System.Windows.Forms.ToolStripMenuItem resultOption;
+        private System.Windows.Forms.ToolStripMenuItem cardOption;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

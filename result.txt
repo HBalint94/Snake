@@ -1,0 +1,4 @@
+nev: Balint, pont: 0
+nev: Bence, pont: 0
+nev: Pityu, pont: 1
+nev: Józsi, pont: 1
